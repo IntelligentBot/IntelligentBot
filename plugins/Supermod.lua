@@ -12,7 +12,7 @@ local function check_member_super(cb_extra, success, result)
     if member_id ~= our_id then
       -- SuperGroup configuration
       data[tostring(msg.to.id)] = {
-        group_type = 'SuperGroup Protected By Intelligent Bot',
+        group_type = 'SuperGroup With GpSafetier',
 		long_id = msg.to.peer_id,
 		moderators = {},
         set_owner = member_id ,
@@ -1033,7 +1033,7 @@ function show_supergroup_settingsmod(msg, target)
   local gp_type = data[tostring(msg.to.id)]['group_type']
   
   local settings = data[tostring(target)]['settings']
-  local text = "🌏 In The Name Of God ©\n⚙Super Settings \n〰〰〰〰〰〰〰〰〰〰\n➰ Allow Share links : "..settings.lock_link.."\n™ Allow Share contacts: "..settings.lock_contacts.."\n⏺ Allow Make flood: "..settings.flood.."\n🔟 Number Of Flood sensitivity : "..NUM_MSG_MAX.."\n✖️ Allow Make spam: "..settings.lock_spam.."\n🔛 Allow Speak Arabic: "..settings.lock_arabic.."\n📣 Allow Add Member: "..settings.lock_member.."\n🗯 Allow Share RTL Links: "..settings.lock_rtl.."\n🔃 Allow Tgservice: "..settings.lock_tgservice.."\n🔸 Allow Share sticker: "..settings.lock_sticker.."\n#⃣ Allow Share tags(#): "..settings.tag.."\n😎 Allow Share emoji: "..settings.emoji.."\n🇻🇬 Allow Speak english: "..settings.english.."\n🏇 Allow fwd(forward): "..settings.fwd.."\n⛸ Allow reply: "..settings.reply.."\n📲 Allow join with Link: "..settings.join.."\n🎫 Allow Share username(@): "..settings.username.."\n🎬 Allow Share media: "..settings.media.."\n🎭 Allow Send fosh: "..settings.fosh.."\n🤕 Ban For Leavings: "..settings.leave.."\n🤖 Allow Add bots: "..bots_protection.."\n👽 Allow operator: "..settings.operator.."\n〰〰〰〰〰〰〰〰〰〰👋\n Group Sweets & Switchs:\n🚫 Switch Type Etehad: "..settings.etehad.."\n📲 Lock all settings: "..settings.all.."\n〰〰〰〰〰〰〰〰〰\n🗣 About Group:\n>🔅 Group Model: "..gp_type.."\n👥 Public: "..settings.public.."\n🎩 Strict settings: "..settings.strict.."\n🔥 Intelligent Bot Beta© "
+  local text = "🌏 The Intelligent  ©\n⚙SuperGroups Locks & Switchs! \n〰〰〰〰〰〰〰〰〰〰\n➰ Allow Share links : "..settings.lock_link.."\n™ Allow Share contacts: "..settings.lock_contacts.."\n⏺ Allow Make flood: "..settings.flood.."\n🔟 Number Of Flood sensitivity : "..NUM_MSG_MAX.."\n✖️ Allow Make spam: "..settings.lock_spam.."\n🔛 Allow Speak Arabic: "..settings.lock_arabic.."\n📣 Allow Add Member: "..settings.lock_member.."\n🗯 Allow Share RTL Links: "..settings.lock_rtl.."\n🔃 Allow Tgservice: "..settings.lock_tgservice.."\n🔸 Allow Share sticker: "..settings.lock_sticker.."\n#⃣ Allow Share tags(#): "..settings.tag.."\n😎 Allow Share emoji: "..settings.emoji.."\n🇻🇬 Allow Speak english: "..settings.english.."\n🏇 Allow fwd(forward): "..settings.fwd.."\n⛸ Allow reply: "..settings.reply.."\n📲 Allow join with Link: "..settings.join.."\n🎫 Allow Share username(@): "..settings.username.."\n🎬 Allow Share media: "..settings.media.."\n🎭 Allow Send fosh: "..settings.fosh.."\n🤕 Ban For Leavings: "..settings.leave.."\n🤖 Allow Add bots: "..bots_protection.."\n👽 Allow operator: "..settings.operator.."\n〰〰〰〰〰〰〰〰〰〰👋\n Group Sweets & Switchs:\n🚫 Switch Type Etehad: "..settings.etehad.."\n📲 Lock all settings: "..settings.all.."\n〰〰〰〰〰〰〰〰〰\n🗣 About Group:\n>🔅 Group Model: "..gp_type.."\n👥 Public: "..settings.public.."\n🎩 Strict settings: "..settings.strict.."\n🔥 The Technica Intelligent Bot "
   return text
 end
 
@@ -1736,7 +1736,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "🚸 ایدی شما: "..msg.from.id.."\n🚸یوزر نیم شما : @"..msg.from.username.." \n🚸شماره ی شما : ( +" ..msg.from.phone.. " )\n🚸 نام گروه : " ..string.gsub(msg.to.print_name, "_", " ").. "\n🚸 ایدی گروه : "..msg.to.id
+				return "👤 Your ID: "..msg.from.id.."\n👤 Your Name: "..msg.from.print_name.."\n👥 SuperGroup Name: " ..string.gsub(msg.to.print_name, "_", " ").. "\n👥 SuperGroup ID: "..msg.to.id
 			end
 		end
 
