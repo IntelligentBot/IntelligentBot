@@ -6,7 +6,7 @@ end
 
 return {
 patterns = {
-"^[Aa][Ll}[Ll][Ww][Ee][Nn]$",
+"^[Aa][Ll][Ll][Ww][Ee][Nn]$",
 "^[Aa][Ll][Ee][Nn]$",
 "^الن$",
 "^آلن$"
