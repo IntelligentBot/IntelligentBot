@@ -1,4 +1,4 @@
---Begin supergroup.lua
+--Begin supergrpup.lua
 --Check members #Add supergroup
 local function check_member_super(cb_extra, success, result)
   local receiver = cb_extra.receiver
@@ -12,7 +12,7 @@ local function check_member_super(cb_extra, success, result)
     if member_id ~= our_id then
       -- SuperGroup configuration
       data[tostring(msg.to.id)] = {
-        group_type = 'SuperGroup Protected By Intelligent',
+        group_type = 'SuperGroup Protected By Intelligent Bot',
 		long_id = msg.to.peer_id,
 		moderators = {},
         set_owner = member_id ,
@@ -1031,10 +1031,9 @@ function show_supergroup_settingsmod(msg, target)
 		end
 	end
   local gp_type = data[tostring(msg.to.id)]['group_type']
-  local gp_type = data[tostring(msg.to.id)]['group_type']
   
   local settings = data[tostring(target)]['settings']
-  local text = "🌏 In The Name Of God ©\n⚙SuperGroups Settings ! \n〰〰〰〰〰〰〰〰〰〰\n➰ Allow Share links : "..settings.lock_link.."\n™ Allow Share contacts: "..settings.lock_contacts.."\n⏺ Allow Make flood: "..settings.flood.."\n🔟 Number Of Flood sensitivity : "..NUM_MSG_MAX.."\n✖️ Allow Make spam: "..settings.lock_spam.."\n🔛 Allow Speak Arabic: "..settings.lock_arabic.."\n📣 Allow Add Member: "..settings.lock_member.."\n🗯 Allow Share RTL Links: "..settings.lock_rtl.."\n🔃 Allow Tgservice: "..settings.lock_tgservice.."\n🔸 Allow Share sticker: "..settings.lock_sticker.."\n#⃣ Allow Share tags(#): "..settings.tag.."\n😎 Allow Share emoji: "..settings.emoji.."\n🇻🇬 Allow Speak english: "..settings.english.."\n🏇 Allow fwd(forward): "..settings.fwd.."\n⛸ Allow reply: "..settings.reply.."\n📲 Allow join with Link: "..settings.join.."\n🎫 Allow Share username(@): "..settings.username.."\n🎬 Allow Share media: "..settings.media.."\n🎭 Allow Send fosh: "..settings.fosh.."\n🤕 Ban For Leavings: "..settings.leave.."\n🤖 Allow Add bots: "..bots_protection.."\n👽 Allow operator: "..settings.operator.."\n〰〰〰〰〰〰〰〰〰〰👋\n Group Sweets & Switchs:\n🚫 Switch Type Etehad: "..settings.etehad.."\n📲 Lock all settings: "..settings.all.."\n〰〰〰〰〰〰〰〰〰\n🗣 About Group:\n>🔅 Group Model: "..gp_type.."\n👥 Public: "..settings.public.."\n🎩 Strict settings: "..settings.strict.."\n🔥 Intelligent Bot Beta© "
+  local text = "🌏 In The Name Of God ©\n⚙Super Settings \n〰〰〰〰〰〰〰〰〰〰\n➰ Allow Share links : "..settings.lock_link.."\n™ Allow Share contacts: "..settings.lock_contacts.."\n⏺ Allow Make flood: "..settings.flood.."\n🔟 Number Of Flood sensitivity : "..NUM_MSG_MAX.."\n✖️ Allow Make spam: "..settings.lock_spam.."\n🔛 Allow Speak Arabic: "..settings.lock_arabic.."\n📣 Allow Add Member: "..settings.lock_member.."\n🗯 Allow Share RTL Links: "..settings.lock_rtl.."\n🔃 Allow Tgservice: "..settings.lock_tgservice.."\n🔸 Allow Share sticker: "..settings.lock_sticker.."\n#⃣ Allow Share tags(#): "..settings.tag.."\n😎 Allow Share emoji: "..settings.emoji.."\n🇻🇬 Allow Speak english: "..settings.english.."\n🏇 Allow fwd(forward): "..settings.fwd.."\n⛸ Allow reply: "..settings.reply.."\n📲 Allow join with Link: "..settings.join.."\n🎫 Allow Share username(@): "..settings.username.."\n🎬 Allow Share media: "..settings.media.."\n🎭 Allow Send fosh: "..settings.fosh.."\n🤕 Ban For Leavings: "..settings.leave.."\n🤖 Allow Add bots: "..bots_protection.."\n👽 Allow operator: "..settings.operator.."\n〰〰〰〰〰〰〰〰〰〰👋\n Group Sweets & Switchs:\n🚫 Switch Type Etehad: "..settings.etehad.."\n📲 Lock all settings: "..settings.all.."\n〰〰〰〰〰〰〰〰〰\n🗣 About Group:\n>🔅 Group Model: "..gp_type.."\n👥 Public: "..settings.public.."\n🎩 Strict settings: "..settings.strict.."\n🔥 Intelligent Bot Beta© "
   return text
 end
 
@@ -1590,7 +1589,7 @@ local function run(msg, matches)
 	local print_name = user_print_name(msg.from):gsub("‮", "")
 	local name_log = print_name:gsub("_", " ")
 	local data = load_data(_config.moderation.data)
-		if matches[1] == 'active' and not matches[2] then
+		if matches[1] == 'add' and not matches[2] then
 			if not is_admin1(msg) and not is_support(support_id) then
 				return
 			end
@@ -1604,7 +1603,7 @@ local function run(msg, matches)
 			channel_set_admin(receiver, 'user#id'..msg.from.id, ok_cb, false)
 		end
 
-		if matches[1] == 'deactive' and is_admin1(msg) and not matches[2] then
+		if matches[1] == 'rem' and is_admin1(msg) and not matches[2] then
 			if not is_super_group(msg) then
 				return reply_msg(msg.id, 'SuperGroup is not added.', ok_cb, false)
 			end
@@ -1745,7 +1744,6 @@ local function run(msg, matches)
 			if msg.to.type == 'channel' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] left via kickme")
 				channel_kick("channel#id"..msg.to.id, "user#id"..msg.from.id, ok_cb, false)
-				return "Bye Bye :D"
 			end
 		end
 
@@ -2666,7 +2664,7 @@ local function run(msg, matches)
 					savelog(msg.to.id, name_log.." Support member ["..msg.from.id.."] joined the SuperGroup")
 					channel_set_mod(receiver, user, ok_cb, false)
 				end
-			end-- by #SikTirMirza and #Allwen For Intelligent Project
+			end
 			if action == 'chat_add_user' then
 				if is_owner2(msg.action.user.id) then
 					local receiver = get_receiver(msg)
@@ -2683,7 +2681,7 @@ local function run(msg, matches)
 			end
 		end
 		if matches[1] == 'msg.to.peer_id' then
-			return "عنشو در اوردید دگ :|"
+			post_large_msg(receiver, msg.to.peer_id)
 		end
 	end
 end
