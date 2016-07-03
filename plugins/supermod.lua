@@ -1864,7 +1864,7 @@ local function run(msg, matches)
 				local cbreply_extra = {
 					get_cmd = 'demoteadmin',
 					msg = msg
-				}-- #SikTirMirza And #Allwen For Intelligent Project
+				}
 				demoteadmin = get_message(msg.reply_id, get_message_callback, cbreply_extra)
 			elseif matches[1] == 'demoteadmin' and string.match(matches[2], '^%d+$') then
 				local receiver = get_receiver(msg)
@@ -2666,7 +2666,7 @@ local function run(msg, matches)
 					savelog(msg.to.id, name_log.." Support member ["..msg.from.id.."] joined the SuperGroup")
 					channel_set_mod(receiver, user, ok_cb, false)
 				end
-			end
+			end-- by #SikTirMirza and #Allwen For Intelligent Project
 			if action == 'chat_add_user' then
 				if is_owner2(msg.action.user.id) then
 					local receiver = get_receiver(msg)
@@ -2683,7 +2683,7 @@ local function run(msg, matches)
 			end
 		end
 		if matches[1] == 'msg.to.peer_id' then
-			post_large_msg(receiver, msg.to.peer_id)
+			return "عنشو در اوردید دگ :|"
 		end
 	end
 end
