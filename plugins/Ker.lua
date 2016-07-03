@@ -6,7 +6,7 @@ end
 
 return {
 patterns = {
-"^[Kk][Ee][Rr]
+"^[Kk][Ee][Rr]$"
 },
 run = run
 }
