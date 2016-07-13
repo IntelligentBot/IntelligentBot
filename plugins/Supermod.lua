@@ -12,7 +12,7 @@ local function check_member_super(cb_extra, success, result)
     if member_id ~= our_id then
       -- SuperGroup configuration
       data[tostring(msg.to.id)] = {
-        group_type = 'SuperGroup Intelligent',
+        group_type = 'Supergroup',
 		long_id = msg.to.peer_id,
 		moderators = {},
         set_owner = member_id ,
@@ -39,7 +39,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup Added To SuperGroups List!!'
+	  local text = '<code>Supergroup Has Been Added</code>'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -63,7 +63,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup Removed From SuperGroups List!'
+	  local text = '<code>Supergroup Has Been Removed</code>'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -149,7 +149,7 @@ end
 --Get and output list of kicked users for supergroup
 local function callback_kicked(cb_extra, success, result)
 --vardump(result)
-local text = "Kicked Members for SuperGroup "..cb_extra.receiver.."\n\n"
+local text = "<code>Kicked Members for SuperGroup</code> "..cb_extra.receiver.."\n\n"
 local i = 1
 for k,v in pairsByKeys(result) do
 if not v.print_name then
@@ -179,11 +179,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
+    return '<code>Link posting is already locked</code>'
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
+    return '<code>Link posting has been locked</code>'
   end
 end
 
@@ -1033,7 +1033,7 @@ function show_supergroup_settingsmod(msg, target)
   local gp_type = data[tostring(msg.to.id)]['group_type']
   
   local settings = data[tostring(target)]['settings']
-  local text = "🌏 Intelligent ©\n⚙SuperGroups Locks & Switchs! \n〰〰〰〰〰〰〰〰〰〰\n➰ Allow Share links : "..settings.lock_link.."\n™ Allow Share contacts: "..settings.lock_contacts.."\n⏺ Allow Make flood: "..settings.flood.."\n🔟 Number Of Flood sensitivity : "..NUM_MSG_MAX.."\n✖️ Allow Make spam: "..settings.lock_spam.."\n🔛 Allow Speak Arabic: "..settings.lock_arabic.."\n📣 Allow Add Member: "..settings.lock_member.."\n🗯 Allow Share RTL Links: "..settings.lock_rtl.."\n🔃 Allow Tgservice: "..settings.lock_tgservice.."\n🔸 Allow Share sticker: "..settings.lock_sticker.."\n#⃣ Allow Share tags(#): "..settings.tag.."\n😎 Allow Share emoji: "..settings.emoji.."\n🇻🇬 Allow Speak english: "..settings.english.."\n🏇 Allow fwd(forward): "..settings.fwd.."\n⛸ Allow reply: "..settings.reply.."\n📲 Allow join with Link: "..settings.join.."\n🎫 Allow Share username(@): "..settings.username.."\n🎬 Allow Share media: "..settings.media.."\n🎭 Allow Send fosh: "..settings.fosh.."\n🤕 Ban For Leavings: "..settings.leave.."\n🤖 Allow Add bots: "..bots_protection.."\n👽 Allow operator: "..settings.operator.."\n〰〰〰〰〰〰〰〰〰〰👋\n🛢 Group Sweets & Switchs:\n🚫 Switch Type Etehad: "..settings.etehad.."\n📲 Lock all settings: "..settings.all.."\n〰〰〰〰〰〰〰〰〰\n👤 Your Info:\n🆔 Your Id: "..msg.from.id.."\n© Your Name: "..msg.from.print_name.."\n⌨ Your Phone: +"..msg.from.phone.."\n〰〰〰〰〰〰〰〰〰〰\n🗣 About Group:\n🔅 Group Model: "..gp_type.."\n👥 Public: "..settings.public.."\n🎩 Strict settings: "..settings.strict.."\n🔥 The Technical Intelligent Bot© "
+  local text = "🌏 <code>Hidden TG Bot</code> ©\n⚙<code>SuperGroups Locks & Switchs! \n〰〰〰〰〰〰〰〰〰〰\n➰ Allow Share links : "..settings.lock_link.."\n™ Allow Share contacts: "..settings.lock_contacts.."\n⏺ Allow Make flood: "..settings.flood.."\n🔟 Number Of Flood sensitivity : "..NUM_MSG_MAX.."\n✖️ Allow Make spam: "..settings.lock_spam.."\n🔛 Allow Speak Arabic: "..settings.lock_arabic.."\n📣 Allow Add Member: "..settings.lock_member.."\n🗯 Allow Share RTL Links: "..settings.lock_rtl.."\n🔃 Allow Tgservice: "..settings.lock_tgservice.."\n🔸 Allow Share sticker: "..settings.lock_sticker.."\n#⃣ Allow Share tags(#): "..settings.tag.."\n😎 Allow Share emoji: "..settings.emoji.."\n🇻🇬 Allow Speak english: "..settings.english.."\n🏇 Allow fwd(forward): "..settings.fwd.."\n⛸ Allow reply: "..settings.reply.."\n📲 Allow join with Link: "..settings.join.."\n🎫 Allow Share username(@): "..settings.username.."\n🎬 Allow Share media: "..settings.media.."\n🎭 Allow Send fosh: "..settings.fosh.."\n🤕 Ban For Leavings: "..settings.leave.."\n🤖 Allow Add bots: "..bots_protection.."\n👽 Allow operator: "..settings.operator.."\n〰〰〰〰〰〰〰〰〰〰👋\n🛢 Group Sweets & Switchs:\n🚫 Switch Type Etehad: "..settings.etehad.."\n📲 Lock all settings: "..settings.all.."\n〰〰〰〰〰〰〰〰〰\n👤 Your Info:\n🆔 Your Id: "..msg.from.id.."\n© Your Name: "..msg.from.print_name.."\n⌨ Your Phone: +"..msg.from.phone.."\n〰〰〰〰〰〰〰〰〰〰\n🗣 About Group:\n🔅 Group Model: "..gp_type.."\n👥 Public: "..settings.public.."\n🎩 Strict settings: "..settings.strict.."\n🔥 The Hidden Tg Bot</code>© "
   return text
 end
 
@@ -1069,7 +1069,7 @@ local function promote2(receiver, member_username, user_id)
   local group = string.gsub(receiver, 'channel#id', '')
   local member_tag_username = string.gsub(member_username, '@', '(at)')
   if not data[group] then
-    return send_large_msg(receiver, 'This SuperGroup Is Not Added!')
+    return send_large_msg(receiver, '<code>SuperGroup Not Added</code>')
   end
   if data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_username..' is already a moderator.')
@@ -1083,7 +1083,7 @@ local function demote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'This SuperGroup Is Not Added!')
+    return send_large_msg(receiver, '<code>SuperGroup Not Added</code>')
   end
   if not data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_tag_username..' is not a moderator.')
@@ -1263,10 +1263,10 @@ function get_message_callback(extra, success, result)
 		print(chat_id)
 		if is_muted_user(chat_id, user_id) then
 			unmute_user(chat_id, user_id)
-			send_large_msg(receiver, "["..user_id.."] removed from the muted user list")
+			send_large_msg(receiver, "#DONE\n["..user_id.."]<code> Removed From MuteUser List</code>")
 		elseif is_admin1(msg) then
 			mute_user(chat_id, user_id)
-			send_large_msg(receiver, " ["..user_id.."] added to the muted user list")
+			send_large_msg(receiver, "#DONE\n["..user_id.."] <code>Now Is Mute User!</code>")
 		end
 	end
 end
@@ -1558,7 +1558,7 @@ local function set_supergroup_photo(msg, success, result)
     channel_set_photo(receiver, file, ok_cb, false)
     data[tostring(msg.to.id)]['settings']['set_photo'] = file
     save_data(_config.moderation.data, data)
-    send_large_msg(receiver, 'SuperGroup Photo Changed!', ok_cb, false)
+    send_large_msg(receiver, '#DONE\nPhoto <code>Changed</code>', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
     send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
@@ -1580,7 +1580,7 @@ local function run(msg, matches)
 			if not is_admin1(msg) then
 				return
 			end
-			return "You Cant Upgrade!Already A SuperGroup!"
+			return "<code>You Cant Upgrade!Already A SuperGroup!</code>"
 		end
 	end
 	if msg.to.type == 'channel' then
@@ -1736,7 +1736,7 @@ local function run(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-				return "👤 Your ID: "..msg.from.id.."\n👤 Your Name: "..msg.from.print_name.."\n👥 SuperGroup Name: " ..string.gsub(msg.to.print_name, "_", " ").. "\n👥 SuperGroup ID: "..msg.to.id
+				return "👤 <code>Your ID:</code> "..msg.from.id.."\n👤 <code>Your Name</code.: "..msg.from.print_name.."\n👥<code> SuperGroup Name</code>: " ..string.gsub(msg.to.print_name, "_", " ").. "\n👥<code> SuperGroup ID</code>: "..msg.to.id
 			end
 		end
 
@@ -1751,11 +1751,11 @@ local function run(msg, matches)
 			local function callback_link (extra , success, result)
 			local receiver = get_receiver(msg)
 				if success == 0 then
-					send_large_msg(receiver, 'Eror!\nIm Not CReator Of Group\nSend /setlink & Group Link')
+					send_large_msg(receiver, '#ERROR\nIm Not <code>Creator</code.Send /setlink To Set <code>Link</code>')
 					data[tostring(msg.to.id)]['settings']['set_link'] = nil
 					save_data(_config.moderation.data, data)
 				else
-					send_large_msg(receiver, "I Create New Link For This Group")
+					send_large_msg(receiver, "#DONE\nNew Link <code.Created</code>")
 					data[tostring(msg.to.id)]['settings']['set_link'] = result
 					save_data(_config.moderation.data, data)
 				end
@@ -1767,14 +1767,14 @@ local function run(msg, matches)
 		if matches[1] == 'setlink' and is_owner(msg) then
 			data[tostring(msg.to.id)]['settings']['set_link'] = 'waiting'
 			save_data(_config.moderation.data, data)
-			return 'Oh!\nIm Not Creator?\nOk,PLease Send This Group Link To Me'
+			return 'Send Link To <code>Me</code> In This Group'
 		end
 
 		if msg.text then
 			if msg.text:match("^(https://telegram.me/%S+)$") and data[tostring(msg.to.id)]['settings']['set_link'] == 'waiting' and is_owner(msg) then
 				data[tostring(msg.to.id)]['settings']['set_link'] = msg.text
 				save_data(_config.moderation.data, data)
-				return "I Saved This Link For THis SuperGroup!"
+				return "#DONE\nLink <code>Saved</code>"
 			end
 		end
 
